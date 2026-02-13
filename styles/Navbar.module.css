@@ -1,0 +1,28 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #231c3b;
+  color: white;
+  position: fixed;
+  width: 100%;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.links a {
+  display: flex;
+  align-items: center;   /* vertically center icon + text */
+  gap: 0.5rem;           /* space between icon and text */
+  text-decoration: none;
+  color: white;
+}
+
+.links a:hover {
+  color: rgb(148, 118, 224);
+}
