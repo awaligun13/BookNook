@@ -17,8 +17,8 @@
 
 .links a {
   display: flex;
-  align-items: center;   /* vertically center icon + text */
-  gap: 0.5rem;           /* space between icon and text */
+  align-items: center;
+  gap: 0.5rem;          
   text-decoration: none;
   color: white;
 }

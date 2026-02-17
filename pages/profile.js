@@ -1,3 +1,7 @@
+import ProfileCard from "./components/full_profile"
+
 export default function Profile(){
- return <hi>Your Profile</hi>;
+ return (
+    <ProfileCard />
+ );
 }
