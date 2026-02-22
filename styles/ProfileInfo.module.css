@@ -11,8 +11,14 @@
     border-radius: 360px;
 }
 .text_info{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
     width: 500px;
     height: 525px;
     border-radius: 50px;
     background-color: #2b224c;
+}
+.text_info h1{
+    padding-top: 15px;
 }

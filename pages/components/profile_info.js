@@ -7,13 +7,13 @@ export default function Profile() {
     <div className= {styles.profile_card}>
         <Image
             className={styles.profile_picture}
-            src="/profile.jpg"   // put image in public folder
+            src="/profile.jpg"  
             alt="Profile picture"
             width={150}
             height={150}
         />
         <div className = {styles.text_info}>
-            <h1 className="displayname">Display Name</h1>
+            <h1 className="displayname">Display Name <button>Edit Profile</button></h1>
             <h2 className="username">@username</h2>
             <h3 className="favoritebook">Favorite Book</h3>
 
