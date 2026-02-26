@@ -8,19 +8,28 @@ export default function SignInBox(){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [displayName, setDisplayName] = useState("");
     const [error, setError] = useState("");
     const [isSignUp, setIsSignUp] = useState(false);
     const provider = new GoogleAuthProvider();
+    const bookList = [];
+    const bio = "";
+    const readingLog = [];
 
-
-    const handleLogin = async (e) => {//handleLogin function from firebase
-        e.preventDefault();//keeps the browser from refreshing
+    const handleLogin = async (e) => {
+        e.preventDefault();
         try{
 
             if (isSignUp){
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 await setDoc(doc(db, "users", userCredential.user.uid), {
                     email: email,
+                    username: username,
+                    displayName: displayName,
+                    books: bookList,
+                    bio: bio,
+                    readingLog: readingLog,
                     createdAt: new Date(),
                 });
             } else {
@@ -53,6 +62,24 @@ export default function SignInBox(){
         <div className = {styles.overlay}>
             <form className = {styles.signIn} onSubmit={handleLogin}>
                 <h1>{isSignUp ? "Create Account" : "Sign In"}</h1>
+
+                {isSignUp && (
+                    <>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required/>
+                        <input
+                            type="text"
+                            placeholder="Display Name"
+                            value={displayName}
+                            onChange={(e) => setDisplayName(e.target.value)}
+                            required/>
+                    </>
+                )}
+
                 <input //input box for email
                     type = "email"
                     placeholder="Email"

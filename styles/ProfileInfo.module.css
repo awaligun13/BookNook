@@ -9,6 +9,7 @@
     width: 300px;
     height:300px;
     border-radius: 360px;
+    border: 15px solid #2b224c;
 }
 .text_info{
     display:flex;

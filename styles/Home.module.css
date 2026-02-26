@@ -1,7 +1,7 @@
 .home_page {
   display: flex;
   flex-direction: column;
-  background-color: #1b1533;
+  padding-top: 90px;
 }
 
 .top {
@@ -12,6 +12,7 @@
 
   padding: 100px 0;
   width: 100%;
+  opacity: 75%;
 
   background: linear-gradient(
     135deg,
@@ -22,7 +23,7 @@
   );
 }
 .logo {
-  padding-top: 50px;
+  padding-top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +48,6 @@
 
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -61,37 +61,103 @@
   transform: translateY(-3px);
 }
 
+.bookRow{
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding: 20px;
+  scroll-behavior: smooth;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.firstRead{
+  margin-left: 630px;
+}
+.bookCard{
+  flex: 0 0 auto;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+}
+
 .information{
   padding: 20px;
-  display: flex;
-  flex-direction: row;
+  background-image: url("../public/Copilot_20260222_184837.png");
+  background-size: cover;       
+  background-position: top center; 
+  background-repeat: no-repeat;  
+  gap: 20px;
+}
+
+.bottomRow{
+  display:flex;
+  gap:20px;
+  justify-content:center;
 }
 
 .leftColumn{
+  align-items:center;
+  width: 50%;
+}
+.creator{
+  width: 50%;
+  position: relative;
+  display:flex;
+  align-items: center;
+}
+.creator img{
+  z-index:100;
+  width: 300;
+  height:auto;
+  border-radius:360px;
+
+  position: absolute;
+  left: 50%; 
+  top:-10px;      
+  transform: translateX(-50%);
+  border: 6px solid rgba(255, 255, 255, 0.3);
+
+}
+.question{
+  margin-left: 250px;
+  padding: 10px;
+}
+.bottomRow p{
+  font-size: 25px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  opacity: 75%;
 
   border-radius: 50px;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-
+}
+.creator p{
+  padding-top: 100px;
+  margin-top: 195px;
+}
+.bottom{
   display:flex;
   align-items:center;
-  flex-direction: column;
-  width: 75%;
-}
-.leftColumn h1{
-  padding: 10px;
-}
-.nextBook {
-  width: 25%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  height: 30px;
+  padding: 20px;
+  padding-top: 60px;
 }
-
-.nextBook h2 {
-  width: 500px;
+.bottom img{
+  height: 25px;
+  width:auto;
+}
+.bottom p{
+  color: rgba(255, 255, 255, 0.568);
 }

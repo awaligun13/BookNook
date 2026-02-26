@@ -1,5 +1,9 @@
+import Reading_Room from "./components/ReadingRoomComponent.js";
+
 export default function ReadingRoom(){
  return (
- <hi>Reading Room</hi>
+ <div>
+    <Reading_Room />
+ </div>
  );
 }
