@@ -4,7 +4,8 @@ export async function searchBooks(query){
         return [];
     }
     try{
-        const res = await fetch(`/api/hello?query=${encodeURIComponent(query)}`);
+        const fullQuery = `${query} fiction novel bestseller`
+        const res = await fetch(`/api/hello?query=${encodeURIComponent(fullQuery)}&printType=books&orderBy=newest&langRestrict=en`);
         const data = await res.json();
         return data.items || [];
     }catch (error){

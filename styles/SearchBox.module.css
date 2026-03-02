@@ -56,11 +56,11 @@
   background-color: #005bb5;
 }
 .results{
-    flex: 1;                 /* take remaining vertical space */
-    width: 100%;             /* match parent width */
+    flex: 1;             
+    width: 100%;           
     overflow-y: auto;
     overflow-x: hidden;
-    margin-top: 20px;        /* smaller spacing */
+    margin-top: 20px;       
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -80,4 +80,40 @@
     width: 50px;
     height:auto;
     border-radius:5px;
+}
+.bookInfo{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    color: gray;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.stats{
+    font-size: 10px;
+    display:flex;
+    width: 500px;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+    gap:10px;
+}
+.bookCover{
+    width: 200px;
+    height:auto;
+    border-radius:5px;
+}
+.bookInfo button{
+    width: 100px;
+    height: 40px;
+    cursor:pointer;
+    background-color: gray;
+    transition: transform 0.3s;
+}
+.bookInfo button:hover{
+    background-color: #56468f;
+}
+.bio{
+    display:flex;
+    flex-direction: column;
 }

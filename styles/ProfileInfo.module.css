@@ -19,7 +19,35 @@
     height: 525px;
     border-radius: 50px;
     background-color: #2b224c;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 .text_info h1{
     padding-top: 15px;
+}
+.editProfile{
+  margin: 8px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+} 
+
+.editProfile:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+.text_info p{
+  margin: 20px;
+  padding: 10px;
+  background-color: #56468f;
+  color: lightgray;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  height: 950px;
+  border-radius: 20px;
+  width: 450px;
 }

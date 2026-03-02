@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import { auth, db } from "../library/firebaseConfig";
-import {doc, setDoc} from "firebase/firestore";
 import styles from "../../styles/SignInBox.module.css";
+import {register, loginUser } from "./UserDoc"
 
 export default function SignInBox(){
 
@@ -12,59 +10,29 @@ export default function SignInBox(){
     const [displayName, setDisplayName] = useState("");
     const [error, setError] = useState("");
     const [isSignUp, setIsSignUp] = useState(false);
-    const provider = new GoogleAuthProvider();
-    const bookList = [];
-    const bio = "";
-    const readingLog = [];
 
-    const handleLogin = async (e) => {
+    async function handleSubmit(e) {
         e.preventDefault();
+        setError("");
+
         try{
-
             if (isSignUp){
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                await setDoc(doc(db, "users", userCredential.user.uid), {
-                    email: email,
-                    username: username,
-                    displayName: displayName,
-                    books: bookList,
-                    bio: bio,
-                    readingLog: readingLog,
-                    createdAt: new Date(),
-                });
-            } else {
-                await signInWithEmailAndPassword(auth, email, password);
+                await register(email,password,username,displayName);
+            }else{
+                await loginUser(email,password)
             }
-            setError("");
-        }
-        catch (error){
+        }catch (error){
             setError(error.message);
         }
-
-    };
-    const handleGoogleSignIn = async () => {
-        try {
-            const result = await signInWithPopup(auth, provider);
-
-            await setDoc(doc(db, "users", result.user.uid), {
-                email: result.user.email,
-                name: result.user.displayName,
-                createdAt: new Date(),
-            },{ merge: true });
-
-            setError("");
-        } catch (error) {
-            setError(error.message);
-        }
-    };
+    }
 
     return (
         <div className = {styles.overlay}>
-            <form className = {styles.signIn} onSubmit={handleLogin}>
+            <form className = {styles.signIn} onSubmit={handleSubmit}>
                 <h1>{isSignUp ? "Create Account" : "Sign In"}</h1>
 
                 {isSignUp && (
-                    <>
+                    <div>
                         <input
                             type="text"
                             placeholder="Username"
@@ -77,10 +45,10 @@ export default function SignInBox(){
                             value={displayName}
                             onChange={(e) => setDisplayName(e.target.value)}
                             required/>
-                    </>
+                    </div>
                 )}
 
-                <input //input box for email
+                <input 
                     type = "email"
                     placeholder="Email"
                     value={email}
@@ -108,9 +76,6 @@ export default function SignInBox(){
                         {isSignUp ? "Sign In Instead" : "Sign Up Here"}
                     </button>
 
-                    <button type="button" onClick={handleGoogleSignIn}className={styles.googleButton}>
-                        Sign In with Google
-                    </button>
                 </div>
 
             </form>

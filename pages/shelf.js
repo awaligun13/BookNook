@@ -1,20 +1,58 @@
 import styles from "../styles/Shelf.module.css"
 import Image from "next/image"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchBox from "./components/SearchBox";
 import {searchBooks} from "./library/googleBooks";
+import { auth } from "./library/firebaseConfig";
+import { getDocument} from "./components/UserDoc";
+import BookDetails from "./components/book_details_popup";
 
 export default function Shelf(){
+
     const [open, setOpen] = useState(false);
     const [showSearchBox, setShowSearchBox] = useState(false);
     const [books, setBooks] = useState([]);
+    const [savedBooks, setSavedBooks] = useState([]);
+    const [userData, setUserData] = useState(null);
+    const [selectedBook, setSelectedBook] = useState(null);
 
+    const booksPerShelf = 7;
+    const defaultShelves = 3;
+
+    useEffect (() => {
+        const getUser = async () => {
+            const user = auth.currentUser;
+            const data = await getDocument("users", user.uid);
+            setUserData(data);
+            setSavedBooks(data.books || []);
+        }
+        getUser();
+        }, []);
+    function shelvesBooks(booksArray, perShelf){
+        const shelves = [];
+        for (let i = 0; i < booksArray.length; i += perShelf){
+            shelves.push(booksArray.slice(i, i + perShelf))
+        }
+        return shelves;
+    }
+    const buildShelfs = () => {
+        const getBooksOnShelf = shelvesBooks(savedBooks, booksPerShelf);
+        const totalShelves = Math.max(getBooksOnShelf.length, defaultShelves);
+
+        const allShelves = [];
+        for (let i = 0; i < totalShelves; i++){
+            allShelves.push(getBooksOnShelf[i] || []);
+        }
+        return allShelves;
+    }
     const toggleMenu = () => setOpen(!open);
 
     const handleSearch = async (query) => {
         const results = await searchBooks(query);
         setBooks(results);
     }
+
+    const shelves = buildShelfs();
 
  return (
     <div className={styles.page}>
@@ -33,16 +71,35 @@ export default function Shelf(){
             </div>
         </div>
         {showSearchBox && (
-            <SearchBox 
-                onSearch = {handleSearch}
-                close={() => setShowSearchBox(false)}
-            />
+            <SearchBox onSearch = {handleSearch} close={() => setShowSearchBox(false)}/>
         )}
-        <div className={styles.topShelf}></div>
+        {selectedBook && (
+            <BookDetails book={selectedBook} onClose={() => setSelectedBook(null)}/>
+        )}
 
-        <div className={styles.Shelf}></div>
-
-        <div className={styles.Shelf}></div>
+        {shelves.map((shelfBooks, shelfIndex) => (
+            <div className = {styles.Shelf}>
+                <div className={styles.insideShelf}>
+                    {shelfBooks.map((book, bookIndex) => {
+                    const info = book?.bookData;
+                    return info ? (
+                        <div className={styles.bookItem} onClick={() => setSelectedBook(book)} style ={{cursor:"pointer"}}>
+                            {info.imageLinks?.thumbnail ? (
+                            <img src={info.imageLinks.thumbnail} alt={info.title || "Book cover"}/>
+                            ) : (
+                            <div className={styles.placeholder}>No Image</div>
+                                )}
+                        </div>
+                        ) : (
+                        <div key={bookIndex} className={styles.bookItem}>
+                            <div className={styles.placeholder}>No Data</div>
+                                <h4>No Title</h4>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        ))}
     </div>
  );
 }

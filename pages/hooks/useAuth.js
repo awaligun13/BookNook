@@ -5,12 +5,12 @@ import { auth } from "../library/firebaseConfig";
 export const useAuth = () => {
   const [user, setUser] = useState(undefined); 
 
-  useEffect(() => {//if auth state changes
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {//if someone logs in, change user to their information
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
 
-    return () => unsubscribe();//clear out the function
+    return () => unsubscribe();
   }, []);
 
   return user;

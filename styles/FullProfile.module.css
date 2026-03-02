@@ -16,16 +16,15 @@
 }
 
 .profileContainer > :nth-child(2) {
-  grid-column: 2 / 3; /* second column */
-  grid-row: 1 / 2;    /* top half of right side */
+  grid-column: 2 / 3; 
+  grid-row: 1 / 2;    
 }
 
 .profileContainer > :nth-child(3) {
-  grid-column: 2 / 3; /* second column */
-  grid-row: 2 / 3;    /* bottom half of right side */
+  grid-column: 2 / 3; 
+  grid-row: 2 / 3;    
 }
 
-/* Optional styling for child components */
 .profileContainer > * {
   background-color: #120f20;
   color: #56468f;

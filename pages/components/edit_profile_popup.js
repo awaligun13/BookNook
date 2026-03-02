@@ -1,44 +1,35 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, db } from "../library/firebaseConfig";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { auth } from "../library/firebaseConfig";
+import {getDocument, setDocument} from "./UserDoc";
 import styles from "../../styles/EditProfilePopUp.module.css";
-import getUserData from "../hooks/getUserData";
+
 
 export default function EditProfilePopUp({ onClose }) {
 
-    const { user, userData, loading } = getUserData();
     const [username, setUsername] = useState("");
     const [displayName, setDisplayName] = useState("");
     const [bio, setBio] = useState("");
 
-    useEffect(() => {
-    if (userData) {
-      setUsername(userData.username || "");
-      setDisplayName(userData.displayName || "");
-      setBio(userData.bio || "");
-    }
-  }, [userData]);
-
-    const handleSave = async () => {
-        try{
-            const user = auth.currentUser;
-            if (!user) return;
-            const docRef = doc(db, "users", user.uid);
-            await updateDoc(docRef, {
-                username: username,
-                displayName: displayName,
-                bio: bio
-            });
-            alert("Profile updated!");
-            onClose();
-        } catch (error){
-            console.error("Error updating profile", error);
+    useEffect (() => {
+        const getUser = async () => {
+        const user = auth.currentUser;
+        const data = await getDocument("users", user.uid);
+        if (data){
+            setUsername(data.username || "");
+            setDisplayName(data.displayName || "");
+            setBio(data.bio || "");
         }
-    };
-    if (loading) return <p>Loading...</p>;
-    if (!userData) return <p>No user data found.</p>;
+    }
+    getUser();
+    }, []);
+
+    const saveChanges = async() => {
+        const user = auth.currentUser;
+        await setDocument("users", user.uid, { username, displayName, bio});
+    }
+
     return (
         <div className={styles.overlay}>
             <div className={styles.box}>
@@ -62,7 +53,7 @@ export default function EditProfilePopUp({ onClose }) {
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                 />
-                <button className={styles.saveChanges} onClick={handleSave}>Save Changes</button>
+                <button className={styles.saveChanges} onClick={saveChanges}>Save Changes</button>
             </div>
         </div>
     );

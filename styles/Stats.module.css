@@ -1,0 +1,7 @@
+.chartBox{
+  margin: 5px;
+  padding: 10px;
+  background-color: #56468f;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+}

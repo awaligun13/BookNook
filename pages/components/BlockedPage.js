@@ -1,7 +1,7 @@
 import {useAuth} from "../hooks/useAuth";
 import SignInBox from "./SignInBox";
 
-export default function ProtectedRoute( {children} ){
+export default function BlockedPage( {children} ){
     const user = useAuth();
 
     if (user === undefined){

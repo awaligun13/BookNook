@@ -1,29 +1,65 @@
 import styles from "../../styles/ReadingRoom.module.css"
-import {useState, useRef} from "react";
-import { auth, db } from "../library/firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import getUserData from "../hooks/getUserData";
+import {useState, useRef, useEffect} from "react";
+import Pages_Popup from "./pages_popup";
+import {getDocument, addToDocumentArray} from "./UserDoc";
+import { auth } from "../library/firebaseConfig";
 
 export default function Reading_Room(){
-    
-    const { user, userData, loading } = getUserData();
+
+    const [userData, setUserData] = useState(null);
+
     const [seconds, setSeconds] = useState(0)
     const interval = useRef(null)
 
-    const startTimer = () => {
-        if (interval.current) {
+    const [showPopup, setShowPopup] = useState(false);
+    const pageStart = useRef(0);
+
+    useEffect (() => {
+        const getUser = async () => {
+          const user = auth.currentUser;
+          const data = await getDocument("users", user.uid);
+          setUserData(data);
+          }
+          getUser();
+          }, []);
+
+    const getStartPage = () => {
+        if (interval.current) { 
             return;
         }
-
+        setShowPopup(true); 
+    };
+    const startTimer = (startingPage) =>{
+        pageStart.current = startingPage;
         interval.current = setInterval(() => {
             setSeconds((prev) => prev + 1);
         }, 1000);
-    };
-
+    }
     const stopTimer = () => {
         clearInterval(interval.current);
         interval.current = null;
+        setShowPopup(true);
+    }
+
+    const handlePageSubmit = async (page) => {
+        setShowPopup(false);
+        const user = auth.currentUser;
+
+        if (!interval.current && seconds>0){
+            const pagesRead = page - pageStart.current;
+
+            if (pagesRead > 0){
+                const newEntry = {pages: pagesRead, timeSpent: seconds, date: new Date()};
+                await addToDocumentArray("users", user.uid, "readingLog", newEntry);
+                setUserData(prev => ({
+                ...prev,
+                readingLog: [...(prev.readingLog || []), newEntry]
+            }));
+            }
+            setSeconds(0);
+        }else{
+            startTimer(page);
+        }
     };
 
     const resetTimer = () => {
@@ -34,16 +70,18 @@ export default function Reading_Room(){
 
     return(
         <div className = {styles.background}>
-            <div className = {styles.timer_box}>
+            <div className = {styles.box}>
                 <h2>{String(Math.floor(seconds/60)).padStart(2, "0")}:
                     {String(seconds % 60).padStart(2, "0")}
                 </h2>
                 <div className = {styles.buttons}>
-                <button onClick={startTimer}>Start</button>
+                <button onClick={getStartPage}>Start</button>
                 <button onClick={stopTimer}>Stop</button>
                 <button onClick={resetTimer}>Reset</button>
                 </div>
             </div>
+            {showPopup && <Pages_Popup onSubmit={handlePageSubmit} />}
         </div>
+        
     );
 }

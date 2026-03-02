@@ -12,9 +12,8 @@ export default function Home() {
 
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    async function getBooks(){
-      const newBooks = await searchBooks("subject:fiction&printType=books&orderBy=relevance&langRestrict=en");
+  useEffect(() => { async function getBooks(){
+      const newBooks = await searchBooks("classic");
       setBooks(newBooks);
     }
     getBooks();

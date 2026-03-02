@@ -28,7 +28,7 @@
     align-items:center;
     width: 900px;
     height: 250px;
-    background: lightgrey;
+    background: #2b224c;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.468);
     border-radius: 20px;
     padding:20px;
@@ -36,11 +36,11 @@
 }
 
 .box input {
-    width: 750px;
+    width: 825px;
     font-size:20px;
     padding: 5px;
     border: 2px solid #56468f;
-    border-radius:6px;
+    border-radius:10px;
     background-color: gray;
 }
 .bio{
@@ -50,5 +50,18 @@
 
 .saveChanges{
     font-size: 20px;
-    border-radius: 10px;
+    margin: 8px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.saveChanges:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
 }

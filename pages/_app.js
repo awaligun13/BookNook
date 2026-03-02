@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import Navbar from "./components/navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
+import BlockedPage from "./components/BlockedPage";
 
 export default function App({ Component, pageProps, router }) {
 
@@ -14,9 +14,9 @@ export default function App({ Component, pageProps, router }) {
       {isPublic ? (
         <Component {...pageProps} />
       ) : (
-        <ProtectedRoute>
+        <BlockedPage>
           <Component {...pageProps} />
-        </ProtectedRoute>
+        </BlockedPage>
       )}
     </>
   );

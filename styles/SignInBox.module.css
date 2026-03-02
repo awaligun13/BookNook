@@ -17,10 +17,10 @@
     text-align: center;
 }
 .signIn input{
-  margin: 10px;        /* less spacing */
-  padding: 6px 10px;     /* smaller inside space */
-  width: 200px;          /* fixed smaller width */
-  font-size: 14px;       /* slightly smaller text */
+  margin: 10px;      
+  padding: 6px 10px;     
+  width: 200px;       
+  font-size: 14px;       
 
   border-radius: 10px;
   border: 2px solid #2b224c;
