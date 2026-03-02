@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import SearchBox from "./components/SearchBox";
 import {searchBooks} from "./library/googleBooks";
 import { auth } from "./library/firebaseConfig";
-import { getDocument} from "./components/UserDoc";
+import { getDocument, removeFromDocumentArray} from "./components/UserDoc";
 import BookDetails from "./components/book_details_popup";
 
 export default function Shelf(){
@@ -15,6 +15,7 @@ export default function Shelf(){
     const [savedBooks, setSavedBooks] = useState([]);
     const [userData, setUserData] = useState(null);
     const [selectedBook, setSelectedBook] = useState(null);
+    const [removeMode, setRemoveMode] = useState(false);
 
     const booksPerShelf = 7;
     const defaultShelves = 3;
@@ -52,7 +53,16 @@ export default function Shelf(){
         setBooks(results);
     }
 
+    const removeBook = async(book) => {
+        const user = auth.currentUser;
+        const data = await getDocument("users", user.uid);
+        await removeFromDocumentArray("users", user.uid, "books", book);
+        setSavedBooks(data.books || []);
+        setRemoveMode(false);
+    }
+
     const shelves = buildShelfs();
+
 
  return (
     <div className={styles.page}>
@@ -67,7 +77,9 @@ export default function Shelf(){
              </button>
              <div className={`${styles.menuButtons} ${open ? styles.open : ""}`}>
                 <button onClick ={() => setShowSearchBox(true)}>Add</button>
-                <button>Remove</button>
+            <button onClick={() => setRemoveMode(prev => !prev)}>
+                {removeMode ? "Cancel Remove" : "Remove"}
+            </button>
             </div>
         </div>
         {showSearchBox && (
@@ -76,14 +88,23 @@ export default function Shelf(){
         {selectedBook && (
             <BookDetails book={selectedBook} onClose={() => setSelectedBook(null)}/>
         )}
+        {removeMode && <p style={{color: "red"}}>Click a book to remove it, then refresh!</p>}
 
         {shelves.map((shelfBooks, shelfIndex) => (
             <div className = {styles.Shelf}>
                 <div className={styles.insideShelf}>
                     {shelfBooks.map((book, bookIndex) => {
                     const info = book?.bookData;
+
+                    const handleClick = () =>{
+                        if (removeMode){
+                            removeBook(book);
+                        }else{
+                            setSelectedBook(book);
+                        }
+                    }
                     return info ? (
-                        <div className={styles.bookItem} onClick={() => setSelectedBook(book)} style ={{cursor:"pointer"}}>
+                        <div className={styles.bookItem} onClick={handleClick} style ={{cursor:"pointer"}}>
                             {info.imageLinks?.thumbnail ? (
                             <img src={info.imageLinks.thumbnail} alt={info.title || "Book cover"}/>
                             ) : (

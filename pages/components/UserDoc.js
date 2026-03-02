@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail} from "firebase/auth";
 import { auth, db } from "../library/firebaseConfig";
-import {doc, setDoc, getDoc, arrayUnion, updateDoc} from "firebase/firestore";
+import {doc, setDoc, getDoc, arrayUnion, updateDoc, arrayRemove} from "firebase/firestore";
  
 export async function setDocument(collectionName, docId, data) {
         await setDoc(doc(db, collectionName, docId), data, { merge: true });
@@ -36,4 +36,10 @@ export async function addToDocumentArray(collectionName, docId, field, value) {
   await updateDoc(docRef, {
     [field]: arrayUnion(value)
   });
+}
+export async function removeFromDocumentArray(collectionName, docId, field, value){
+  const docRef = doc(db, collectionName, docId);
+  await updateDoc(docRef, {
+    [field]: arrayRemove(value)
+  })
 }

@@ -1,16 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import profilePic from "../../public/IMG_9263.png";
 import styles from "../../styles/ProfileInfo.module.css";
 import {useState, useEffect } from "react";
 import EditProfilePopUp from "../components/edit_profile_popup";
 import { auth } from "../library/firebaseConfig";
 import {getDocument} from "./UserDoc";
+import ProfilePicturePopup from "./profile_pic_popup";
 
 export default function Profile() {
 
   const [showPopup, setShowPopup] = useState(false);
+  const [showPicPopup, setShowPicPopup] = useState(false); 
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -30,7 +31,6 @@ export default function Profile() {
     getUser();
   }, []);
 
-  // Wait until userData is loaded
   if (loading) return <p>Loading...</p>;
   if (!userData) return <p>No user data found.</p>;
 
@@ -39,7 +39,7 @@ export default function Profile() {
       <div className={styles.profile_card}>
         <Image
           className={styles.profile_picture}
-          src={profilePic}
+          src={userData.profilePic}
           width={150}
           height={150}
         />
@@ -49,6 +49,7 @@ export default function Profile() {
             <button  className = {styles.editProfile} onClick={() => setShowPopup(true)}>
               Edit Profile
             </button>
+            <button className = {styles.editProfile} onClick = {() => setShowPicPopup(true)}>Change Profile Pic</button>
           </h1>
           <h2>@{userData.username}</h2>
           <h3>Favorite Book</h3>
@@ -57,6 +58,9 @@ export default function Profile() {
       </div>
       {showPopup && (
         <EditProfilePopUp onClose={() => setShowPopup(false)} />
+      )}
+      {showPicPopup && (
+        <ProfilePicturePopup onClose={() => setShowPicPopup(false)} />
       )}
     </div>
   );

@@ -13,44 +13,44 @@
 }
 
 .close{
-    position: absolute;
-    top: 40px;
-    right: 430px;
-    font-size: 30px;
-    background:transparent;
-    border:none;
-    cursor:pointer;
+  position: absolute;
+  top: 40px;
+  right: 430px;
+  font-size: 30px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
 }
 
 .box{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    width: 900px;
-    height: 250px;
-    background: #2b224c;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.468);
-    border-radius: 20px;
-    padding:20px;
-    gap:10px;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  width: 900px;
+  height: 250px;
+  background: #2b224c;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.468);
+  border-radius: 20px;
+  padding:20px;
+  gap:10px;
 }
 
 .box input {
-    width: 825px;
-    font-size:20px;
-    padding: 5px;
-    border: 2px solid #56468f;
-    border-radius:10px;
-    background-color: gray;
+  width: 825px;
+  font-size:20px;
+  padding: 5px;
+  border: 2px solid #56468f;
+  border-radius:10px;
+  background-color: gray;
 }
 .bio{
-    font-size: 10px;
-    height: 150px;
+  font-size: 10px;
+  height: 150px;
 }
 
 .saveChanges{
-    font-size: 20px;
-    margin: 8px;
+  font-size: 20px;
+  margin: 8px;
   padding: 5px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);

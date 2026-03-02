@@ -95,3 +95,10 @@
   width:auto;
   border-radius:4px;
 }
+.bookItem:hover{
+  transform: scale(1.05);
+}
+.bookItem:active{
+  transform: scale(0.98); 
+  border: 7px solid #56468f;
+}
