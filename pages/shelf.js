@@ -74,7 +74,9 @@ export default function Shelf(){
     const pickFavoriteBook = async(book) => {
         const user = auth.currentUser;
         const data = await getDocument("users", user.uid);
-    
+        setDocument("users", user.uid, {favoriteBook : book});
+        setSelectFavorite(false);
+
     }
     const shelves = buildShelfs();
  return (

@@ -1,4 +1,4 @@
-//my homepage! i used a lot of visuals in this, it only has one button that just is a link to the profile page to prompt a sign in.
+//my homepage! i used a lot of visuals in this, it only has one button that just is a link to the profile page to prompt a sign in.git
 
 "use client";
 import logo from "./assets/Copilot_20260212_200919.png";
