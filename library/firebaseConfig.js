@@ -1,4 +1,4 @@
-
+//this is my firebase connection
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";

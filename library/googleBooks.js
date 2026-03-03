@@ -1,4 +1,5 @@
-
+//i made this function to search for books from the google books api.
+//it returns an array of the search results
 export async function searchBooks(query){
     if (!query){
         return [];

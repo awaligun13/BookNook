@@ -1,3 +1,6 @@
+//this is my sign in box. I have it covering all pages except the home page at first, so a user needs to sign in to see the readingRoom, profilepage, and bookshelf.
+//I have buttons that change from sign in to sign up, and they use functions in my userdoc file to actually sign in and sign up.
+
 import { useState } from "react";
 import styles from "../../styles/SignInBox.module.css";
 import {register, loginUser } from "../../library/UserDoc"

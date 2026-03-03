@@ -1,3 +1,8 @@
+//the shelf was the hardest part, I was really strugging to make the books appear correctly and also to make the shelf auto generate more shelves.
+//i have buttons that can add books, which opens up the search popup to search for books. my other buttons, remove selectfavorite and write review, all
+//prompt the user to select which book first, and then it will be either removed, saved as the favorite book, or given the review popup to write 
+//a review about. 
+
 import styles from "../styles/Shelf.module.css"
 import Image from "next/image"
 import { useState, useEffect } from "react";

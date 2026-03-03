@@ -1,3 +1,5 @@
+//this function creates the review object that is added to the profile.
+//it maps the users review array out and displays the information on the profile page
 import styles from "../../styles/Reviews.module.css";
 import {useState, useEffect} from "react";
 import { auth } from "../../library/firebaseConfig";

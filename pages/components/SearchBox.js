@@ -1,3 +1,8 @@
+//another popup, but this one searches for books. it takes a user query and puts it through my searchBooks function
+//that returns data from googlebooks api. it shows 10 of the results in a scroll menu, where each of the books can be clicked.
+//when theyre clicked, they show a pages_details popup menu, which just goes more in depth and also allows the user to add the book to 
+//their library
+
 import {useState} from "react";
 import styles from "../../styles/SearchBox.module.css";
 import {searchBooks} from "../../library/googleBooks";
@@ -30,8 +35,6 @@ export default function SearchBox({onSearch, close}){
     };
     const pagedResults = results.slice(page * resultsPerPage, (page + 1) * resultsPerPage);
 
-    const nextPage = () => setPage((prev) => prev + 1);
-    const prevPage = () => setPage((prev) => Math.max(prev - 1, 0));
     return (
         <div className ={styles.overlay}>
             <div className ={styles.box}>

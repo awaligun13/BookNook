@@ -1,3 +1,5 @@
+//I put all the user access functions in here, and I added functions to add and remove from user data arrays
+
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, fetchSignInMethodsForEmail} from "firebase/auth";
 import { auth, db } from "../library/firebaseConfig";
 import {doc, setDoc, getDoc, arrayUnion, updateDoc, arrayRemove} from "firebase/firestore";
@@ -21,7 +23,8 @@ export async function register(email, password, username, displayName){
             bio: "",
             readingLog: [],
             reviews: [],
-            profilePic: "/girl.png"
+            profilePic: "/girl.png",
+            favoriteBook: {},
             });
     return user;
 }
