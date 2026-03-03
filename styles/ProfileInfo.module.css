@@ -11,19 +11,27 @@
     border-radius: 360px;
     border: 15px solid #2b224c;
 }
+.buttonRow{
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+  width: 100%;
+  padding:0;
+  margin:5px;
+}
 .text_info{
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    width: 500px;
-    height: 525px;
-    border-radius: 50px;
-    background-color: #2b224c;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  width: 500px;
+  height: 525px;
+  border-radius: 50px;
+  background-color: #2b224c;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
-.text_info h1{
-    padding-top: 15px;
-}
+
 .editProfile{
   margin: 8px;
   padding: 5px;
@@ -42,12 +50,23 @@
   transform: translateY(-3px);
 }
 .text_info p{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin: 20px;
   padding: 10px;
-  background-color: #56468f;
+  background-color: #56468f53;
   color: lightgray;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  height: 950px;
+  height: 900px;
   border-radius: 20px;
   width: 450px;
+}
+.favorite{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin: 5px;
+  gap: 10px;
 }

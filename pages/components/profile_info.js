@@ -1,3 +1,5 @@
+//this is all the user information that is shown on the profile page. I accessed profile picture, username, displayname, bio, and favorite book all here, and then display it
+//I also included buttons to edit the information shown. I call my edit profile popup and my proofile picture popup
 "use client";
 
 import Image from "next/image";
@@ -44,16 +46,23 @@ export default function Profile() {
           height={150}
         />
         <div className={styles.text_info}>
-          <h1>
-            {userData.displayName}
-            <button  className = {styles.editProfile} onClick={() => setShowPopup(true)}>
+          <h1 className = {styles.buttonRow}>
+          <button  className = {styles.editProfile} onClick={() => setShowPopup(true)}>
               Edit Profile
             </button>
             <button className = {styles.editProfile} onClick = {() => setShowPicPopup(true)}>Change Profile Pic</button>
           </h1>
+          <h1>
+            {userData.displayName}
+          </h1>
           <h2>@{userData.username}</h2>
-          <h3>Favorite Book</h3>
           <p>{userData.bio || "Add to your bio!"}</p>
+          
+          <div className = {styles.favorite}>
+          <h3>Favorite Book</h3>
+          <img src={userData.favoriteBook.bookData.imageLinks.thumbnail}/>
+          {userData.favoriteBook.bookData.title};
+          </div>
         </div>
       </div>
       {showPopup && (

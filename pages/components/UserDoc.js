@@ -20,6 +20,7 @@ export async function register(email, password, username, displayName){
             bookList: [],
             bio: "",
             readingLog: [],
+            reviews: [],
             });
     return user;
 }

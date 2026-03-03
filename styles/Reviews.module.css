@@ -1,0 +1,75 @@
+.overlay {
+  position: absolute; 
+  top: 100px; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  padding-top: 2rem; 
+  z-index: 1000;
+}
+.reviewBox{
+    height: 300px;
+    display:flex;
+    gap:10px;
+    flex-direction:column;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.box{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    width: 800px;
+    height: 400px;
+    background: gray;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.468);
+    border-radius: 20px;
+    padding:20px;
+    z-index: 800;
+}
+.singleReview{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: #56468f53;
+    padding:10px;
+    border-radius:15px;
+}
+.userInput{
+    gap:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.box button{
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+} 
+
+.box button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+.userInput textarea{
+    width: 700px;
+    height: 200px;
+    background-color: lightgray;
+    color: black;
+}

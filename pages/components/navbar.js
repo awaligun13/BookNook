@@ -1,3 +1,6 @@
+//my navbar along the top of the website.  I used icons that I had copilot generate as a way to make the navbar cuter, and I included them in the links to each page.
+//I also added a logout button that only appears when a user is signed in.
+
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/Navbar.module.css"

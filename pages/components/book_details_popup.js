@@ -1,3 +1,6 @@
+//This is a popup that shows details about a selected book. the details are pulled out of googlebooks API. it appears as a popup in the middle of the webpage
+//and also contains the button to add the given book to the users database. this gets called in the shelf page to add books to a users library
+
 import styles from "../../styles/SearchBox.module.css";
 import {getDocument, addToDocumentArray} from "./UserDoc";
 import { auth } from "../library/firebaseConfig";

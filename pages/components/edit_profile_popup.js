@@ -1,3 +1,6 @@
+//this is another popup that appear in the middle of the screen when a button is clicked.
+//this one accesses the users data in the database, and allows the username, displayname, and bio to be changed
+
 "use client";
 
 import { useEffect, useState } from "react";

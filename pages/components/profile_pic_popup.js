@@ -1,3 +1,7 @@
+//this is my popup to change the profile picture. I wasnt sure how to have a user uploaded photo, and how to access a user camera library or anything.
+//so I just generated 2 default profile pictures and automatically se it to one, but it can be changed anytime. it is a popup with each picture, you just click
+//the one you want as the profile picture and it is set in the database
+
 import {useState, useEffect} from "react";
 import {getDocument, setDocument} from "./UserDoc";
 import { auth } from "../library/firebaseConfig";
