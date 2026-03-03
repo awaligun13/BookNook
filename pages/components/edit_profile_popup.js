@@ -4,8 +4,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth } from "../library/firebaseConfig";
-import {getDocument, setDocument} from "./UserDoc";
+import { auth } from "../../library/firebaseConfig";
+import {getDocument, setDocument} from "../../library/UserDoc";
 import styles from "../../styles/EditProfilePopUp.module.css";
 
 

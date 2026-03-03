@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   try{
     let { query } = req.query;
-    const API_KEY = process.env.GoogleBooksAPIKey;
+    const API_KEY = process.env.GOOGLE_BOOKS_API_KEY;
 
     if (!query) query = "fiction";
 

@@ -4,9 +4,9 @@ import styles from "../../styles/Stats.module.css"
 import { Bar } from 'react-chartjs-2';
 import{ Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-import { getDocument } from "./UserDoc";
+import { getDocument } from "../../library/UserDoc";
 import {useEffect, useState} from "react";
-import { auth } from "../library/firebaseConfig";
+import { auth } from "../../library/firebaseConfig";
 
 export default function ReadingStats(){
 

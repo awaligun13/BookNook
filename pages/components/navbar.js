@@ -9,7 +9,7 @@ import profile from "../assets/Copilot_20260213_101934.png"
 import shelf from "../assets/Copilot_20260213_101912.png"
 import home from "../assets/Copilot_20260213_103529.png"
 import reading from "../assets/Copilot_20260213_105043.png"
-import { auth } from "../library/firebaseConfig";
+import { auth } from "../../library/firebaseConfig";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 

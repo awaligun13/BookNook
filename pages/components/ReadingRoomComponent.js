@@ -1,8 +1,13 @@
+//this is my reading room. I set the timer and background here and access the database to add new reading logs. It measures time read and pages read within that time.
+//I thought it would be cool to compare those stats to see how quick or effective reading can really be. I have buttons to start, stop, and reset the timers. starting
+//just intiializes the pages_popup, and then the timer starts after the pages are submitted. then, when hit stop, the pages pop is called again and the difference is stored
+//in the database along with the time and date.
+
 import styles from "../../styles/ReadingRoom.module.css"
 import {useState, useRef, useEffect} from "react";
 import Pages_Popup from "./pages_popup";
-import {getDocument, addToDocumentArray} from "./UserDoc";
-import { auth } from "../library/firebaseConfig";
+import {getDocument, addToDocumentArray} from "../../library/UserDoc";
+import { auth } from "../../library/firebaseConfig";
 
 export default function Reading_Room(){
 

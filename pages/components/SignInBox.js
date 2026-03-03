@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../../styles/SignInBox.module.css";
-import {register, loginUser } from "./UserDoc"
+import {register, loginUser } from "../../library/UserDoc"
 
 export default function SignInBox(){
 

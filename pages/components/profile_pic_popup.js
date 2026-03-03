@@ -3,8 +3,8 @@
 //the one you want as the profile picture and it is set in the database
 
 import {useState, useEffect} from "react";
-import {getDocument, setDocument} from "./UserDoc";
-import { auth } from "../library/firebaseConfig";
+import {getDocument, setDocument} from "../../library/UserDoc";
+import { auth } from "../../library/firebaseConfig";
 import styles from "../../styles/ProfilePicPopup.module.css";
 
 export default function ProfilePicturePopup({onClose}){

@@ -1,7 +1,7 @@
 import styles from "../../styles/Reviews.module.css";
 import {useState, useEffect} from "react";
-import { auth } from "../library/firebaseConfig";
-import {getDocument} from "./UserDoc";
+import { auth } from "../../library/firebaseConfig";
+import {getDocument} from "../../library/UserDoc";
 
 export default function Reviews(){
 

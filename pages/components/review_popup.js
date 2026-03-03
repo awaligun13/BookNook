@@ -1,8 +1,8 @@
-
+//this is my popup for writing a review. it 
 import { useState, useEffect } from "react";
-import { auth } from "../library/firebaseConfig";
+import { auth } from "../../library/firebaseConfig";
 import styles from "../../styles/Reviews.module.css";
-import {getDocument, addToDocumentArray} from "./UserDoc";
+import {getDocument, addToDocumentArray} from "../../library/UserDoc";
 
 export default function ReviewPopup({book, onClose}){
     

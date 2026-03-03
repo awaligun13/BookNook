@@ -6,7 +6,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import {useState, useEffect} from "react";
 import bio from "../public/IMG_9263.png";
-import { searchBooks } from "./library/googleBooks";
+import { searchBooks } from "../library/googleBooks";
 
 export default function Home() {
 

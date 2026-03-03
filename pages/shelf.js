@@ -2,9 +2,9 @@ import styles from "../styles/Shelf.module.css"
 import Image from "next/image"
 import { useState, useEffect } from "react";
 import SearchBox from "./components/SearchBox";
-import {searchBooks} from "./library/googleBooks";
-import { auth } from "./library/firebaseConfig";
-import { getDocument, removeFromDocumentArray, setDocument} from "./components/UserDoc";
+import {searchBooks} from "../library/googleBooks";
+import { auth } from "../library/firebaseConfig";
+import { getDocument, removeFromDocumentArray, setDocument} from "../library/UserDoc";
 import BookDetails from "./components/book_details_popup";
 import ReviewPopup from "./components/review_popup";
 

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import styles from "../../styles/SearchBox.module.css";
-import {searchBooks} from "../library/googleBooks";
+import {searchBooks} from "../../library/googleBooks";
 import BookDetails from "./book_details_popup";
 
 export default function SearchBox({onSearch, close}){

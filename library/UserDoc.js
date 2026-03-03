@@ -21,6 +21,7 @@ export async function register(email, password, username, displayName){
             bio: "",
             readingLog: [],
             reviews: [],
+            profilePic: "/girl.png"
             });
     return user;
 }

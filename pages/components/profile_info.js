@@ -6,8 +6,8 @@ import Image from "next/image";
 import styles from "../../styles/ProfileInfo.module.css";
 import {useState, useEffect } from "react";
 import EditProfilePopUp from "../components/edit_profile_popup";
-import { auth } from "../library/firebaseConfig";
-import {getDocument} from "./UserDoc";
+import { auth } from "../../library/firebaseConfig";
+import {getDocument} from "../../library/UserDoc";
 import ProfilePicturePopup from "./profile_pic_popup";
 
 export default function Profile() {
@@ -60,8 +60,13 @@ export default function Profile() {
           
           <div className = {styles.favorite}>
           <h3>Favorite Book</h3>
-          <img src={userData.favoriteBook.bookData.imageLinks.thumbnail}/>
-          {userData.favoriteBook.bookData.title};
+          {userData.favoriteBook.bookData.imageLinks?.thumbnail && (
+                <img
+                  src={userData.favoriteBook.bookData.imageLinks.thumbnail}
+                  alt={userData.favoriteBook.bookData.title || "Favorite Book"}
+                />
+              )}
+              <p>{userData.favoriteBook.bookData.title || "No title available"}</p>
           </div>
         </div>
       </div>

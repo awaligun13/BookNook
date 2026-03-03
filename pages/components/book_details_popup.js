@@ -2,8 +2,8 @@
 //and also contains the button to add the given book to the users database. this gets called in the shelf page to add books to a users library
 
 import styles from "../../styles/SearchBox.module.css";
-import {getDocument, addToDocumentArray} from "./UserDoc";
-import { auth } from "../library/firebaseConfig";
+import {getDocument, addToDocumentArray} from "../../library/UserDoc";
+import { auth } from "../../library/firebaseConfig";
 import {useState, useEffect} from "react";
 
 export default function BookDetails({book, onClose}){
