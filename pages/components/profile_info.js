@@ -57,17 +57,17 @@ export default function Profile() {
           </h1>
           <h2>@{userData.username}</h2>
           <p>{userData.bio || "Add to your bio!"}</p>
-          
-          <div className = {styles.favorite}>
-          <h3>Favorite Book</h3>
-          {userData.favoriteBook.bookData.imageLinks?.thumbnail && (
-                <img
-                  src={userData.favoriteBook.bookData.imageLinks.thumbnail}
-                  alt={userData.favoriteBook.bookData.title || "Favorite Book"}
-                />
-              )}
-              <p>{userData.favoriteBook.bookData.title || "No title available"}</p>
+          <div className={styles.favorite}>
+            <h3>Favorite Book</h3>
+            {userData.favoriteBook?.bookData?.imageLinks?.thumbnail && (
+            <img
+              src={userData.favoriteBook.bookData.imageLinks.thumbnail}
+              alt={userData.favoriteBook.bookData.title || "Favorite Book"}
+            />
+            )}
+              <div>{userData.favoriteBook?.bookData?.title || "No favorite book selected"}</div>
           </div>
+          
         </div>
       </div>
       {showPopup && (

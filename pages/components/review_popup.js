@@ -1,4 +1,5 @@
-//this is my popup for writing a review. it 
+//this is my popup for writing a review. when it opens, the book is already selected. so it just takes in the book, and then input 
+//for the rating and the review. its all saved to the reviews array in the database
 import { useState, useEffect } from "react";
 import { auth } from "../../library/firebaseConfig";
 import styles from "../../styles/Reviews.module.css";

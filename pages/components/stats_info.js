@@ -1,3 +1,5 @@
+//Uses chartjs to show reading stats. calls them from the db and formats them all here
+
 "use client";
 
 import styles from "../../styles/Stats.module.css"
